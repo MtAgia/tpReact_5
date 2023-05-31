@@ -4,8 +4,9 @@ import Form from "react-bootstrap/Form";
 import ListaTareas from "./ListaTareas";
 import { useState, useEffect } from "react";
 const Formulariotarea = () => {
+  let recuperarTareas = JSON.parse(localStorage.getItem("listaTarea")) || []
   const [tarea, setTarea] = useState("");
-  const [arrayTarea, setArrayTarea] = useState([])
+  const [arrayTarea, setArrayTarea] = useState(recuperarTareas)
   const handleSubmit = (e) =>{
     e.preventDefault()
     setArrayTarea([...arrayTarea, tarea]);
