@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import ListaTareas from "./ListaTareas";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const Formulariotarea = () => {
   const [tarea, setTarea] = useState("");
   const [arrayTarea, setArrayTarea] = useState([])
@@ -11,6 +11,10 @@ const Formulariotarea = () => {
     setArrayTarea([...arrayTarea, tarea]);
     e.target.reset()
   }
+  useEffect(()=>{
+    localStorage.setItem("listaTarea", JSON.stringify(arrayTarea));
+  },[arrayTarea])
+  
   const borrarTarea = (nombreTarea) =>{
     let copiaTareas = arrayTarea.filter((itemTarea)=>itemTarea !== nombreTarea);
     setArrayTarea(copiaTareas)
